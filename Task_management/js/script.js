@@ -8,18 +8,18 @@ function displayRecords() {
 
   const records = getRecord();
   if (records.length === 0) {
-    recordList.innerHTML = `<tr><td colspan = "" class="px-5 text-center"> No Records found</td></tr>`;
+    recordList.innerHTML = `<tr class="px-5 text-center"><td class="px-5 text-center"><span class="mx-5 px-4">No Records found</span></td></tr>`;
     return;
   }
 
   records.forEach((record, index) => {
     recordList.innerHTML += `
-      <tr class="px-5 text-center">
-              <td class="mx-2">${record.name}</td>
-                  <td class="mx-2">${record.details}</td>
-                  <td>
-                      <button class="btn btn-danger" onclick='loadRecord(${index})'>Edit</button>
-                      <button class="btn btn-success" onclick='deleteRecord(${index})'>Delete</button>
+      <tr class=" " >
+              <td class="px-4 ">${record.name}</td>
+                  <td class="px-4">${record.details}</td>
+                  <td class="d-flex justify-content-end px-4 ms-5 ps-5">
+                      <button class="btn btn-danger mx-2 ms-5" onclick='loadRecord(${index})'>Edit</button>
+                      <button class="btn btn-success mx-2" onclick='deleteRecord(${index})'>Delete</button>
                   </td>
       </tr>
       `;
@@ -101,7 +101,7 @@ function searchRecord() {
   recordList.innerHTML = "";
 
   if (filertRecords.length === 0) {
-    recordList.innerHTML = `<tr><td colspan = "4"> No Records found</td></tr>`;
+    recordList.innerHTML = `<tr class="px-5 text-center"><td ><span class="mx-5 px-4">No Records found</span></td></tr>`;
     return;
   }
 
