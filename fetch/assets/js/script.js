@@ -1,26 +1,32 @@
-document.getElementById("fetch").addEventListener("click", buttonClickHandler);
+document.getElementById("fetch").addEventListener("click", buttonHandler);
 
-function buttonClickHandler() {
-  fetch("https://jsonplaceholder.typicode.com/users")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      displayData(data);
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
-    });
+function buttonHandler() {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("GET", "https://jsonplaceholder.typicode.com/users", true);
+
+  xhr.onprogress = function () {};
+
+  xhr.onload = function () {
+    if (this.status === 200) {
+      let response = JSON.parse(this.responseText); // JSON
+      displayData(response);
+      return response;
+    } else {
+      console.log(this.status);
+    }
+  };
+
+  xhr.send();
 }
 
+
 function displayData(users) {
-  const container = document.getElementById("data-container");
+  const container = document.getElementById("container");
   container.innerHTML = "";
   users.forEach((user) => {
     const userDiv = document.createElement("div");
+    
     userDiv.classList.add("element");
 
     userDiv.innerHTML = `
