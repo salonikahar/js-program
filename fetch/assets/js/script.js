@@ -1,43 +1,40 @@
-var button = document.getElementById("fetch");
+document.getElementById("fetch").addEventListener("click", buttonClickHandler);
 
-button.addEventListener("click", buttonClickHandle);
-
-
-  params = {
-    name: "Arti",
-    salary: "123",
-    age: "24",
-  };
-
-  xhr.send(params);
-
-
-function buttonClickHandle() {
-  // instance of XMLHTTPREQUEST
-  const xhr = new XMLHttpRequest();
-
-  xhr.open("GET","https://jsonplaceholder.typicode.com/users", true);
-
-  console.log("button clicked");
-
-  xhr.onprogress = function () {
-    console.log("progres");
-  };
-
-  xhr.onload = function () {
-    if (this.status === 200) {
-      // console.log(this.responseText);
-      let response = this.responseText;
-      return response;
-    } else {
-      console.log(this.status);
-    }
-  };
-
-  console.log("end");
-
-  xhr.send();
+function buttonClickHandler() {
+  fetch("https://jsonplaceholder.typicode.com/users")
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      displayData(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
 }
 
-let data = buttonClickHandle();
-console.log(data);
+function displayData(users) {
+  const container = document.getElementById("data-container");
+  container.innerHTML = "";
+  users.forEach((user) => {
+    const userDiv = document.createElement("div");
+    userDiv.classList.add("element");
+
+    userDiv.innerHTML = `
+      <h3>${user.id}</h3>
+      <h4>${user.address.street}</h4>
+      <h4>${user.company.name}</h4>
+    `;
+
+    container.appendChild(userDiv);
+  });
+
+  logFirstElement();
+}
+
+function logFirstElement() {
+  console.log(document.querySelector(".element"));
+}
