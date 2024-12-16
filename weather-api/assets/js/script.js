@@ -1,26 +1,26 @@
 const apiKey = "a516a792024accb77f34519e395792f4";
-const apiUrl =
-  "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+const apiUrl ="https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
 const appId = `&appid=${apiKey}`;
 const searchBox = document.querySelector(".search input");
-const searchBtn = document.querySelector(".search button");
-const weatherIcon = document.querySelector(".weather-icon");
+
+
 
 async function checkWeather(city) {
-  const response = await fetch(apiUrl + city + appId);
+const response = await fetch(apiUrl + city + appId);
 
   if (response.status == 404) {
     document.querySelector(".error").style.display = "block";
     document.querySelector(".weather").style.display = "none";
   } else {
     const data = await response.json();
+    const weatherIcon = document.querySelector(".weather-icon");
 
     document.querySelector(".city").innerHTML = data.name;
-    document.querySelector(".temp").innerHTML =
-      Math.round(data.main.temp) + "°C";
+    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C"; //math.round returns nearest integer
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML = data.wind.speed + " kmph";
 
+    // for the weather
     switch (data.weather[0].main) {
       case "Clear":
         weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-1.svg";
@@ -52,6 +52,9 @@ async function checkWeather(city) {
     document.querySelector(".error").style.display = "none";
   }
 }
+
+// search button
+const searchBtn = document.querySelector(".search button");
 
 searchBtn.addEventListener("click", () => {
   checkWeather(searchBox.value);
