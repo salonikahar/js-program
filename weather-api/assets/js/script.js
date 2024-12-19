@@ -46,51 +46,6 @@ async function checkWeather(city) {
       case "Thunderstorm":
         weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-15.svg";
         break;
-      case "Fog":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-5.svg";
-        break;
-      case "Haze":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-16.svg";
-        break;
-      case "Smoke":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-18.svg";
-        break;
-      case "Dust":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-11.svg";
-        break;
-      case "Sand":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-12.svg";
-        break;
-      case "Ash":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-13.svg";
-        break;
-      case "Squall":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-25.svg";
-        break;
-      case "Tornado":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-26.svg";
-        break;
-      case "Overcast":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-8.svg"; // Overcast clouds
-        break;
-      case "Partly Cloudy":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-6.svg"; // Partly cloudy skies
-        break;
-      case "Light Rain":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-36.svg"; // Light rain
-        break;
-      case "Heavy Rain":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-20.svg"; // Heavy rain
-        break;
-      case "Light Snow":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-31.svg"; // Light snow
-        break;
-      case "Heavy Snow":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-32.svg"; // Heavy snow
-        break;
-      case "Freezing Rain":
-        weatherIcon.src = "https://c.tadst.com/gfx/w/svg/wt-33.svg"; // Freezing rain
-        break;
       default:
         weatherIcon.src = "https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png"; // Default/fallback icon
     }
