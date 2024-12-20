@@ -1,0 +1,55 @@
+body {
+  background: linear-gradient(to right, #16222a, #3a6073);
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  align-items: center;
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  text-align: center;
+}
+
+.card img {
+  width: 50px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+input {
+  padding: 15px 40px;
+  border-radius: 50px;
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.countyimg img{
+  width: 150px;
+  height: 90px;
+}
+
