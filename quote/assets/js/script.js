@@ -25,21 +25,34 @@ const quotes = [
   let quote_text = document.getElementById("quote_text");
   let quote_author = document.getElementById("quote_author");
   let generate = document.getElementById("generate");
+  let autogenerate = document.getElementById("autogenerate");
   
-  generate.addEventListener("click", () => {
-    try {
-      let random = Math.floor(Math.random() * quotes.length);
+function displayQuote() {
+  try {
+    let random = Math.floor(Math.random() * quotes.length);
 
-      if (!quotes || !quotes[random]) {
-        throw new Error("Quotes data is not available or invalid.");
-      }
-  
-      quote_text.textContent = `"${quotes[random].text}"`;
-      quote_author.textContent = quotes[random].author;
-    } catch (error) {
-      console.error("An error occurred:", error.message);
-      quote_text.textContent = "Oops! Something went wrong.";
-      quote_author.textContent = "";
+    if (!quotes || !quotes[random]) {
+      throw new Error("Quotes data is not available or invalid.");
     }
-  });
-  
+
+    quote_text.textContent = `"${quotes[random].text}"`;
+    quote_author.textContent = `— ${quotes[random].author}`;
+  } catch (error) {
+    console.error("An error occurred:", error.message);
+    quote_text.textContent = "Oops! Something went wrong.";
+    quote_author.textContent = "";
+  }
+}
+
+
+generate.addEventListener("click", displayQuote);
+
+autogenerate.addEventListener("click", () => {
+  if (autogenerate.textContent === "Stop auto-generate") {
+    clearInterval(autoGenerateInterval); 
+    autogenerate.textContent = "Start auto-generate"; 
+  } else {
+    autoGenerateInterval = setInterval(displayQuote, 5000);
+    autogenerate.textContent = "Stop auto-generate";  
+  }
+});
